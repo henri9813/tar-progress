@@ -27,8 +27,6 @@ parser.add_argument('-f', '--file', action="store", type=str)
 parser.add_argument('-C', '--directory', action="store", type=str)
 parser.add_argument('files', action="store", type=str, nargs="*")
 
-print(parser.parse_args())
-
 arguments = parser.parse_args()
 archiver = interface.Archiver()
 

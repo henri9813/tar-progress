@@ -3,8 +3,6 @@ from classes.interface import *
 class LinuxArchiver(Archiver):
     plateform = "Linux"
 
-    @classmethod(cls, )
-
     @classmethod
     def create(cls, filename, compression, files):
         import subprocess

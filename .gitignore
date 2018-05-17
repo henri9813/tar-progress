@@ -1,1 +1,5 @@
 .idea
+dist/
+build/
+tar-progress.spec
+oldtar-progress.py
