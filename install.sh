@@ -2,10 +2,8 @@
 
 #Installing the deps
 distrib=$(lsb_release -i | cut -f 2-)
-echo $distrib
 
-
-if [ "$distrib" = "Ubuntu" ] || [ "$ditrib" = "Debian" ]; then
+if [ "$distrib" = "Ubuntu" ] || [ "$distrib" = "Debian" ]; then
 	apt-get install pv
 fi
 if [ "$distrib" = "Fedora" ] || [ "$distrib" = "CentOS" ]; then
