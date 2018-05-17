@@ -49,4 +49,4 @@ if arguments.create:
 if arguments.list:
     archiver.list(arguments.file)
 if arguments.extract:
-    archiver.extractAll(arguments.file)
+    archiver.extractAll(arguments.file, arguments.compressor)

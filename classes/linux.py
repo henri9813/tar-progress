@@ -24,7 +24,14 @@ class LinuxArchiver(Archiver):
         os.system("tar -tf" + compression + " " + filename)
 
     @classmethod
-    def extractAll(cls, filename, destination='.'):
-        command = "(pv " + filename + " | tar -xjf - -C " + destination + " )"
+    def extractAll(cls, filename, compression, destination='.'):
+        if compression == "gz":
+            command = "(pv " + filename + " | tar -xzf - -C " + destination + " )"
+        elif compression == "bz2":
+            command = "(pv " + filename + " | tar -xjf - -C " + destination + " )"
+        elif compression == "xz":
+            command = "(pv " + filename + " | tar -xJf - -C " + destination + " )"
+        else:
+            command = "(pv " + filename + " | tar -xf - -C " + destination + " )"
         os.system(command)
 

@@ -14,9 +14,9 @@ class Archiver:
     @classmethod
     def create(cls, filename, compression, files): raise NotImplementedError
     @classmethod
-    def extract(cls, filename, files, destination='.'): raise NotImplementedError
+    def extract(cls, filename, compression, files, destination='.'): raise NotImplementedError
     @classmethod
-    def extractAll(cls, filename, destination='.'): raise NotImplementedError
+    def extractAll(cls, filename, compression, destination='.'): raise NotImplementedError
     @classmethod
     def list(cls, filename): raise NotImplementedError
     @classmethod
