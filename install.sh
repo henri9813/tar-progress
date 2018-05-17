@@ -9,6 +9,8 @@ if [ $distrib = "Ubuntu" ] || [ $ditrib = "Debian" ]; then
 	apt-get install pv
 fi
 if [ $distrib = "Fedora" ] || [ $distrib = "CentOS" ]; then
+	yum install pv
+fi
 
 #Compiling the python project
 pyinstaller tar-progress.py --onefile
