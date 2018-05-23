@@ -1,4 +1,5 @@
-from classes.interface import *
+from .interface import *
+
 
 class LinuxArchiver(Archiver):
     plateform = "Linux"
@@ -20,7 +21,6 @@ class LinuxArchiver(Archiver):
 
     @classmethod
     def list(cls, filename, compression=""):
-        print("Analysing " + filename)
         os.system("tar -tf" + compression + " " + filename)
 
     @classmethod
