@@ -14,3 +14,6 @@ This program can be launched on these plateforms:
 
 ##Usage
 `tar-progress -cjf myArchive.tar.bz2 myfiles0`
+
+##Linux
+Please install the `pv` package.

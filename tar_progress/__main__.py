@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import platform, argparse
-from .classes import interface, linux, windows
+from tar_progress.classes import interface, linux, windows
 
 
 def main():

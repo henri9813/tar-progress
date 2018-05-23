@@ -1,5 +1,4 @@
 .idea/
 dist/
 build/
-tar-progress.spec
-oldtar-progress.py
+tar_progress.egg-info
