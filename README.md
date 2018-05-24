@@ -3,7 +3,8 @@
 This utility is an adaptation from the GNU TAR program, it provide a progress-bar with a simply command : 
 `tar-progress [OPTIONS] File`
 
-###`pip install tar-progress`
+#Installation
+`pip install tar-progress`
 
 This tool is cross-platform, available on Windows ( New ! ) And also Linux". Please note that in Linux, it only launch the `tar` program with a `pv` command
 
