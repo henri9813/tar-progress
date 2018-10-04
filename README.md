@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/henri9813/tar-progress.svg?branch=master)](https://travis-ci.com/henri9813/tar-progress)
 # tar-progress
 
 This utility is an adaptation from the GNU TAR program, it provide a progress-bar with a simply command : 

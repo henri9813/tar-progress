@@ -1,0 +1,7 @@
+# Changelog
+## [v1.2]()(2018-06-17)
+Only fix an issue, see bellow
+**Fixed bugs:**
+- fix compatibility problem between python 2.7 and 3.x [\#1](https://github.com/henri9813/tar-progress/issues/1)
+## [v1.0]() (2018-05-23)
+Initial version

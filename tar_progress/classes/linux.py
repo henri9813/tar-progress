@@ -1,14 +1,30 @@
-from .interface import *
+"""
+tar-progress: Classes
+"""
+from __future__ import print_function
+from .interface import Archiver, os
 
 
 class LinuxArchiver(Archiver):
-    plateform = "Linux"
+    """
+    Linux Archiver: using GNU tar command
+    """
+    platform = "Linux"
+
+    def __init__(self):
+        Archiver.__init__(self)
+        import platform
+        if platform.system() != self.platform:
+            exit("Linux archiver enabled on non Linux system")
 
     @classmethod
-    def create(cls, filename, compression, files):
+    def create(cls, filename, compression, sources):
         import subprocess
-        files = ' '.join(files)
-        size = subprocess.check_output("du -sb --apparent-size --total " + files + " | tail -n1 | awk '{printf $1}'", shell=True)
+        files = ' '.join(sources)
+        size = subprocess.check_output("du -sb --apparent-size --total "
+                                       + files
+                                       + " | tail -n1 | awk '{printf $1}'",
+                                       shell=True)
         if compression == "gz":
             command = "tar -cf - " + files + " | pv -s " + size + " | gzip > " + filename
         elif compression == "bz2":
@@ -24,7 +40,7 @@ class LinuxArchiver(Archiver):
         os.system("tar -tf" + compression + " " + filename)
 
     @classmethod
-    def extractAll(cls, filename, compression, destination='.'):
+    def extract_all(cls, filename, compression, destination='.'):
         if compression == "gz":
             command = "(pv " + filename + " | tar -xzf - -C " + destination + " )"
         elif compression == "bz2":
@@ -35,3 +51,7 @@ class LinuxArchiver(Archiver):
             command = "(pv " + filename + " | tar -xf - -C " + destination + " )"
         os.system(command)
 
+    @classmethod
+    def extract(cls, filename, compression, sources, destination='.'):
+
+        print("Not implemented at this time..")

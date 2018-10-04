@@ -1,0 +1,18 @@
+language: python
+python:
+- '2.7'
+- '3.4'
+- '3.5'
+- '3.5-dev'
+- '3.6'
+install:
+- python setup.py install
+- pip install pylint
+script:
+- pylint ./tar_progress/ --rcfile=pylint.rc
+after_script: cd ~
+deploy:
+  provider: pypi
+  user: henri9813
+  password:
+    secure: AZEnEOzF6SM5zWsRKEehK9+GV/wPk6SOvTZfJAvxqWcTaeyXMlqKN9x9C5JOQ+LwRDXlxelbGtKcg3KzOlNiq2rL7pGVeFr4XEN1rjqm3dfSnENdeuAmsBK69fTuT/PHL8Cqc4VuJIg7eSOQNHQnIRTcWWGq4ZKGlCyQgWJ+GUurvY2oPhYTZ2zWBMlqf1FExlqQr1jq3dEU47rt9oYMOu2fhqU4O8/zZwEnyDDDzbGTlJIvhmsnbqzQj0sCqoibnZKkfxpNyF0mhi0Vhl90cYD9rCNB/jQNRdV1Ab2Shdfof+InNfuY1w0cH3Wlc8ctbJoYrXxY9iUloaAjHN/2NmVsrGSjXl6+VWeBd0rGeybwtmk7gd3OulGRvjbJomWi9edRwREftKsIePvUrSpFY41Ok1EBvx+p2AMialfTtivEmDjw+t6E5QWleQ2Yn8hJqUbpSAlBzlUosTP2IgoYW/ibmTzEDP2mAKmiGAEWUex2xcZOriUfFImsGFyQhMmZ9lIAT0ylmPl7k/Ky1jfiLb+NqE6+FaHpTY0f2CvsnI06NQRAT7HOUynoaPKAaaug2NZQkUTSYQea6r2RGWcY17Y+kAP/FPb7GkCDjBa/6G8wyGTnVvH0k1oASDooYmMbV3TmJ6kA5rYcmdGrXo1xuT6gRIEHBvw+ej52kjaiS4s=
