@@ -1,44 +1,71 @@
-from .interface import *
+"""
+tar-progress: Classes
+"""
+from __future__ import print_function
 import tarfile
+from .interface import Archiver, os
 
 
 class WindowsArchiver(Archiver):
-    plateform = "Windows"
+    """
+    Windows archiver: using tarfile module from python
+    """
+    platform = "Windows"
+
+    def __init__(self):
+        Archiver.__init__(self)
+        import platform
+        if platform.system() != self.platform:
+            exit("Windows archiver enabled on non windows system")
 
     @classmethod
-    def create(cls, filename, compression, files):
+    def create(cls, filename, compression, sources):
         import tqdm
         tar = tarfile.open(filename, "w:" + compression)
 
-        toCompressSize = 0
-        toCompress = list()
-        for source in files:
-            if os.path.isfile(source):
-                toCompress.append(os.path.abspath(source))
-                toCompressSize += os.path.getsize(source)
-            else:
-                for root, dirs, files in os.walk(source):
-                    for dir in dirs:
-                        if os.listdir(os.path.join(root, dir)) == []:
-                            toCompress.append(os.path.join(root, dir))
-                    for name in files:
-                        toCompress.append(os.path.join(root, name))
-                        toCompressSize += os.path.getsize(os.path.join(root, name))
+        to_compress, to_compress_size = cls.get_files(sources)
 
-        progressBar = tqdm.tqdm(total=toCompressSize, unit="B")
-        for path in toCompress:
+        progress_bar = tqdm.tqdm(total=to_compress_size, unit="B")
+        for path in to_compress:
             tar.add(path)
             if not os.path.isdir(path):
-                progressBar.update(os.path.getsize(path))
-        progressBar.close()
+                progress_bar.update(os.path.getsize(path))
+        progress_bar.close()
         tar.close()
+
+    @classmethod
+    def get_files(cls, sources):
+        """
+        Return the files and the size of sources paths including subdirectory etc...
+        :param sources:
+        :return: list, int
+        """
+        size = 0
+        paths = list()
+        for source in sources:
+            if os.path.isfile(source):
+                paths.append(os.path.abspath(source))
+                size += os.path.getsize(source)
+            else:
+                for root, dirs, files in os.walk(source):
+                    for directory in dirs:
+                        if not os.listdir(os.path.join(root, directory)):
+                            paths.append(os.path.join(root, directory))
+                    for name in files:
+                        paths.append(os.path.join(root, name))
+                        size += os.path.getsize(os.path.join(root, name))
+        return paths, size
 
     @classmethod
     def list(cls, filename, compression=""):
         tar = tarfile.open(filename, "r:" + compression)
-        for file in tar:
-            print(file)
-    @classmethod
-    def extractAll(cls, filename, compression, destination='.'):
-       print("In progress...")
+        for path in tar:
+            print(path)
 
+    @classmethod
+    def extract_all(cls, filename, compression, destination='.'):
+        print("In progress...")
+
+    @classmethod
+    def extract(cls, filename, compression, sources, destination='.'):
+        print("Not implemented at this time..")

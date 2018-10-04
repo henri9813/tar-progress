@@ -9,11 +9,11 @@ setup(
     author='Henri Devigne',
     author_email='henri.devigne@bonkgaming.fr',
     url='https://github.com/henri9813/tar-progress',
-    version='1.0',
+    version='1.2.0',
     description="This utility offer a progress-bar to the GNU tar program, and provide it on Windows",
     long_description=long_description,
     packages=find_packages(),
-    install_requires=['tqdm'],
+    install_requires=['tqdm', 'enum34'],
     entry_points={
         'console_scripts': [
             'tar-progress=tar_progress.__main__:main'

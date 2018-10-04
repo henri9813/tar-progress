@@ -1,10 +1,16 @@
 #!/usr/bin/python
-
-import platform, argparse
+"""
+    tar-progress: monitor tool for tar process
+"""
+import platform
+import argparse
 from tar_progress.classes import interface, linux, windows
 
 
 def main():
+    """
+    Main function
+    """
     parser = argparse.ArgumentParser(description='tar-progress by Henri Devigne')
 
     actions = parser.add_mutually_exclusive_group()
@@ -31,10 +37,7 @@ def main():
     arguments = parser.parse_args()
     archiver = interface.Archiver()
 
-    """
-        Create the archiver object depending on the OS
-    """
-
+    # Create the archiver object depending on the OS
     if platform.system() == "Linux":
         archiver = linux.LinuxArchiver()
     elif platform.system() == "Windows":
@@ -43,13 +46,13 @@ def main():
     if arguments.create:
         if arguments.compressor is not None:
             if arguments.compressor == -1:
-                arguments.compressor = archiver.detectCompressionFromFile(arguments.file)
+                arguments.compressor = archiver.detect_compression_from_file(arguments.file)
 
         archiver.create(arguments.file, arguments.compressor, arguments.files)
     if arguments.list:
         archiver.list(arguments.file)
     if arguments.extract:
-        archiver.extractAll(arguments.file, arguments.compressor)
+        archiver.extract_all(arguments.file, arguments.compressor)
 
 
 if __name__ == '__main__':
