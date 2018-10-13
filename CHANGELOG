@@ -1,4 +1,7 @@
 # Changelog
+## [V1.3.1]()(2018-10-13)
+**Fixed bugs**
+- Verify if the pv package is present on the Linux system
 ## [V1.3]()(2018-10-13)
 **Add features**
 - Add Extraction for Windows Platform

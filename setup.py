@@ -9,7 +9,7 @@ setup(
     author='Henri Devigne',
     author_email='henri.devigne@bonkgaming.fr',
     url='https://github.com/henri9813/tar-progress',
-    version='1.3.0',
+    version='1.3.1',
     description="This utility offer a progress-bar to the GNU tar program, and provide it on Windows",
     long_description=long_description,
     packages=find_packages(),
