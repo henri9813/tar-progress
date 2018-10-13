@@ -17,6 +17,12 @@ class LinuxArchiver(Archiver):
         if platform.system() != self.platform:
             exit("Linux archiver enabled on non Linux system")
 
+        import subprocess
+        try:
+            subprocess.check_output(["which", "pv"]).rstrip()
+        except subprocess.CalledProcessError:
+            exit("ERROR: pv package is not installed, install it: https://pkgs.org/download/pv")
+
     @classmethod
     def create(cls, filename, compression, sources):
         import subprocess
