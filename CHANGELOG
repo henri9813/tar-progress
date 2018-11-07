@@ -1,4 +1,7 @@
 # Changelog
+## [V1.3.2]()(2018-11-7)
+**Fixed bugs**
+Add tar as regular extension ( null compressor method )
 ## [V1.3.1]()(2018-10-13)
 **Fixed bugs**
 - Verify if the pv package is present on the Linux system

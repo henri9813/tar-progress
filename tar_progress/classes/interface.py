@@ -16,7 +16,8 @@ class Archiver(object):
         ".bz2": "bz2",
         ".xz": "xz",
         ".lzma": "xz",
-        ".lz": "xz"
+        ".lz": "xz",
+        ".tar": ""
     }
 
     def __init__(self):
