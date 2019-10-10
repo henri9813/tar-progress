@@ -5,6 +5,8 @@ python:
 - '3.5'
 - 3.5-dev
 - '3.6'
+- '3.7'
+- '3.8'
 install:
 - python setup.py install
 - pip install pylint
@@ -12,10 +14,10 @@ script:
 - pylint ./tar_progress/ --rcfile=pylint.rc
 deploy:
   provider: pypi
-  user: henri9813
+  user: __token__
   server: https://upload.pypi.org/legacy/
   password:
-    secure: AbCH1/G4Fzhfk4VKZFg7FD8IlnEC3pGPIxF2j35kI0nIgvT//2ZltJYmaj8SxfVA37lVfUM7BPMyobhs+xpKbVFb3cSoVhoj4X0G0z/gNL53YJSisLhR3ObFHSnEutdr7GXmEeSJdpBxq1XZkFwvEEX+v5/y06Hhf6RGiYcYUqc2WuGvXvyTudf4tqwTG3GeGX8+pGC7zHB2Yk1BhOWN784HCj0lulmxM3aIIqRxM7tVYfsOKNKkqJYVfN1oDcWUrsfIJgzPwVzdmSY/ToqTa9hrLs3KJ9mrwckj4SZSn0rL2r5Pg3BdGuXEiI5YjVnTm7cDRh4OuZDkhx9/d93b9zTkE2aptCb6Z1jgHGakTnYm+tKiOJCaVnsn3xR3U/eyKjS4A7VrVdu1gzJrZ9kTEgll1XT/LridSE6R1Fiet9AMYIvLJW6f3+wpJYcszQQ0vycC1MuGg/DzvAbibqRTHQfnrhIEb3Ij77iQCqhX05k6e3omATF3SNn4erHU80WyFFllfzBogWzlXW3FfP5gkAgr6IxW0rYNwen5SFjGGZ4OZzXWYQ3Be77PYqk8uiRj3lCOarf98R2hsMbw+iar9JTZdsGMm/hy6MjKorPGtEXJQroedT4Tl16ZUu0sDKZXadP5bcVB7DOBPa/eG4JgJ5Oa3ZrhMDezkKJuta46yXM=
-  distributions: "bdist_wheel"
+    secure: ou7vDesGKRFnS3xXkv8QJVVtansoktrD32RX3xNw8E4TVCRZ8LIANcjWXKDHXxG0f2422s9qLBwZIwGtNf0rIcQ2C3O2gJV6jYYsmlMnBTiX2AnwisqPlYXT+bfH3wnA5yCafpJVfhVxGoaeYspid9yEcNOEBLj/mFFj5OVnuSGM6Qdfl90iY3zch8ekMoh5jALAHo19mEWASFvHt05mg610xcReTvodpSocCGKFP9Ok1y6yhtcIAdoqHZdezZi/bAMXxPiU/U+hvISChjGrzNOpyk0o+PIsvkYtbm1Jc2S8ODSSl3eyZZAdvOC2QCr+l+mSf6yrhqnEk53GFaTs24ES6X7wVxBr0oK7UYLils/li0UUHvZlBcZFFh2u1zX8YlFB5awEvhfw7BT+mb9ltMreWVxadyYVoy+DApoiPafYqoytSbu4tDOVQsq0Xx+jnqEB4fXomZfLxwr8mLxIvbsUgDp1xMyihuEZZ7Ly5VXMkZxS2bZx1/QSLMMdLt3jJ1h+R9Ar/1xS6dwFe0Gxgkes2uAV1KONGLdN0wGJXquKJGKDs0rENy0/f066Vjw1GUuDG8xLMP2koB2c6fHpy8qajObyulmwgxQUa8RqVyOortLiqGi738kCGtNHEypUaATCamU+/OE4cqPQswMyAwyAgX7AGScoW6c2wsKGaqs=
+  distributions: bdist_wheel
   skip_existing: true
   skip_cleanup: true
