@@ -2,6 +2,11 @@
 tar-progress: Classes
 """
 from __future__ import print_function
+
+import platform
+import subprocess
+import sys
+
 from .interface import Archiver, os
 
 
@@ -13,19 +18,16 @@ class LinuxArchiver(Archiver):
 
     def __init__(self):
         Archiver.__init__(self)
-        import platform
         if platform.system() != self.platform:
-            exit("Linux archiver enabled on non Linux system")
+            sys.exit("Linux archiver enabled on non Linux system")
 
-        import subprocess
         try:
             subprocess.check_output(["which", "pv"]).rstrip()
         except subprocess.CalledProcessError:
-            exit("ERROR: pv package is not installed, install it: https://pkgs.org/download/pv")
+            sys.exit("ERROR: pv package is not installed, install it: https://pkgs.org/download/pv")
 
     @classmethod
     def create(cls, filename, compression, sources):
-        import subprocess
         files = ' '.join(sources)
         size = subprocess.check_output("du -sb --apparent-size --total "
                                        + files
@@ -59,5 +61,5 @@ class LinuxArchiver(Archiver):
 
     @classmethod
     def extract(cls, filename, compression, sources, destination='.'):
-
         print("Not implemented at this time..")
+        sys.exit(1)

@@ -2,7 +2,12 @@
 tar-progress: Classes
 """
 from __future__ import print_function
+
+import platform
+import sys
 import tarfile
+import tqdm
+
 from .interface import Archiver, os
 
 
@@ -14,9 +19,8 @@ class WindowsArchiver(Archiver):
 
     def __init__(self):
         Archiver.__init__(self)
-        import platform
         if platform.system() != self.platform:
-            exit("Windows archiver enabled on non windows system")
+            sys.exit("Windows archiver enabled on non windows system")
 
     @classmethod
     def open(cls, filename, compression="", mode="r"):
@@ -37,7 +41,6 @@ class WindowsArchiver(Archiver):
 
     @classmethod
     def create(cls, filename, compression, sources):
-        import tqdm
         tar = cls.open(filename, compression, mode="w")
 
         to_compress, to_compress_size = cls.get_files(sources)
@@ -84,8 +87,7 @@ class WindowsArchiver(Archiver):
     @classmethod
     def extract_all(cls, filename, compression, destination='.'):
         tar = cls.open(filename=filename, mode="r", compression=compression)
-        from tqdm import tqdm
-        for member in tqdm(tar.getmembers()):
+        for member in tqdm.tqdm(tar.getmembers()):
             tar.extract(member)
 
     @classmethod
