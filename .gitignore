@@ -1,4 +1,4 @@
-.idea/
+venv/
 dist/
 build/
 tar_progress.egg-info
