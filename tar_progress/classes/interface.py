@@ -3,6 +3,7 @@ tar-progress: Classes
 """
 
 import os
+import sys
 
 
 class Archiver(object):
@@ -84,5 +85,5 @@ class Archiver(object):
         """
         extension = os.path.splitext(filename)
         if len(extension) < 2:
-            exit("You must specify an extension to use the automatic resolver option.")
+            sys.exit("You must specify an extension to use the automatic resolver option.")
         return cls.EXTENSIONS[extension[1]]
