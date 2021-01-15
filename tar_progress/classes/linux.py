@@ -29,10 +29,10 @@ class LinuxArchiver(Archiver):
     @classmethod
     def create(cls, filename, compression, sources):
         files = ' '.join(sources)
-        size = subprocess.check_output("du -sb --apparent-size --total "
+        size = str(int(subprocess.check_output("du -sb --apparent-size --total "
                                        + files
                                        + " | tail -n1 | awk '{printf $1}'",
-                                       shell=True)
+                                       shell=True)))
         if compression == "gz":
             command = "tar -cf - " + files + " | pv -s " + size + " | gzip > " + filename
         elif compression == "bz2":
