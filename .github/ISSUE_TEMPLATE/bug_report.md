@@ -23,6 +23,7 @@ If applicable, add screenshots to help explain your problem.
 **System Information(please complete the following information):**
  - OS: [e.g. Debian Stretch]
  - Version [e.g. 1.3.1]
+ - Python Version: [e.g. 3.7]
 
 **Additional context**
 Add any other context about the problem here.
