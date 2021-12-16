@@ -63,7 +63,7 @@ class WindowsArchiver(Archiver):
         :rtype: list and int
         """
         size = 0
-        paths = list()
+        paths = []
         for source in sources:
             if os.path.isfile(source):
                 paths.append(os.path.abspath(source))
@@ -80,9 +80,9 @@ class WindowsArchiver(Archiver):
 
     @classmethod
     def list(cls, filename, compression=""):
-        tar = tarfile.open(filename, "r:" + compression)
-        for path in tar:
-            print(path)
+        with tarfile.open(filename, "r:" + compression) as tar:
+            for path in tar:
+                print(path)
 
     @classmethod
     def extract_all(cls, filename, compression, destination='.'):
